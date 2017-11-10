@@ -34,13 +34,10 @@ public class Project implements Serializable{
 	/**
 	 * 
 	 */
-/*	public Project() {
-		this.code = "dsadad";
-	}*/
 	private static final long serialVersionUID = -6530204558619796625L;
-	private Integer id ;
-	private String name;
-	private  String code;
+	private Integer id = 20;
+	private String name="da";
+	private transient String code = "password";
 	private Date beginDate;//java.util.Date
 	private Date endDate;//java.util.Date
 	/***/
@@ -53,14 +50,13 @@ public class Project implements Serializable{
 	private Date modifiedTime;
 	/**创建用户   */
 	private String createdUser;
-	
-/*	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
+	public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File("obj.txt")));
 		Project project = new Project();
 		oos.writeObject(project);
 		Object obj = new ObjectInputStream(new FileInputStream(new File("obj.txt"))).readObject();
 		System.out.println(obj);
-	}*/
+	}
 	public Integer getId() {
 		return id;
 	}

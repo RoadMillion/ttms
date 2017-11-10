@@ -50,13 +50,11 @@
 	   <property name="mapperLocations" >
 			<list>
 			<value>classpath:mapper/*/*.xml</value>
-			<value>classpath:cn/tedu/ttms/product/dao/*.xml</value>
 			</list>
 		</property>
 	 </bean>
     <!-- Mapper接口所在包，Spring会自动查找其下的Mapper -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-	<!-- **表示任意目录，扫描Mapper接口，可以不加注解 -->
 		<property name="basePackage" value="cn.tedu.**.dao "/>
 	</bean>
 

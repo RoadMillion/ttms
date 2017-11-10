@@ -12,8 +12,8 @@
        <typeAlias type="cn.tedu.ttms.product.entity.Project" alias="project"/>
     </typeAliases>
     -->
-    <!--   
-                 为mapper文件中的参数类型, 
+    <!-- 
+                 为mapper文件中的参数类型,
                  返回值类型定义别名
                  假如是采用package元素定义,
                  那默认类型的别名为类名并且

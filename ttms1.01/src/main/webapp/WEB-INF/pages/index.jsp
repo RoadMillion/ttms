@@ -1,7 +1,6 @@
 <%@ page  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="basePath" value="${pageContext.request.contextPath}"></c:set>
-<!-- ${pageContext.request.contextPath}获取当前的应用名，在应用中一般不写死，方便以后该应用名进行扩展。 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -41,7 +40,7 @@
 <div class="wrapper">
   <%@include file="header.jsp" %>
   <%@include file="left.jsp" %>
-  <!-- Content Wrapper. Contains page content 显示内容的区域-->
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
