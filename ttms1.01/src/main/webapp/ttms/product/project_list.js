@@ -3,6 +3,7 @@ var pageCount;
 function clear(){
 	$("#tbodyId").empty();
 }
+
 $(function(){
 	doGetObjects(1);
 	$(".first").click(function(event){
@@ -93,24 +94,9 @@ function doGetObjects(currentPage) {
 			tBody.append(tr);
 		} 
 	}
+}
 function page(pageObject){
 		$(".pageCount").html("总页数(" + pageObject.pageCount+ ")");
 		pageCount = pageObject.pageCount;
-	}
-
-
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
+
