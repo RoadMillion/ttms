@@ -27,14 +27,15 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDao.findObjects();
 	}
 	@Override
-	public Map<String,Object> findPageObjects(Integer pageCurrent) {
+	public Map<String,Object> findPageObjects(String name, Integer valid, Integer pageCurrent) {
 		// TODO Auto-generated method stub
 		if(pageCurrent == null || pageCurrent < 1) {
 			throw new ServiceException("参数值无效,pageCurrent" + pageCurrent);
 		}
 		int pageSize = 2;
+		String order="createdTime";
 		int startIndex = pageSize * (pageCurrent - 1) ;
-		List<Project> list = projectDao.findPageObjects(startIndex, pageSize);
+		List<Project> list = projectDao.findPageObjects(name,valid,startIndex, pageSize,order);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("list", list);
 		PageObject page = new PageObject();
@@ -46,7 +47,7 @@ public class ProjectServiceImpl implements ProjectService {
 			rowCount ++;
 		}
 		page.setRowCount(projectDao.getRowCount());*/
-		page.setRowCount(projectDao.getRowCount());
+		page.setRowCount(projectDao.getRowCount(name,valid));
 		page.setPageSize(pageSize);
 		page.setPageCurrent(pageCurrent);
 		page.setStartIndex(startIndex);
@@ -54,9 +55,9 @@ public class ProjectServiceImpl implements ProjectService {
 		return map;
 	}
 	@Override
-	public int getRowCount() {
+	public int getRowCount(String name,Integer valid) {
 		// TODO Auto-generated method stub
-		return projectDao.getRowCount();
+		return projectDao.getRowCount(name,valid);
 	}
 
 }

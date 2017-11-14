@@ -43,7 +43,7 @@
   </aside>
 <script type="text/javascript">
 $('#load-project-id').click(function(){
-	var url="project/listUI.do?t="+Math.random(1000);
+	var url="project/listUI.do?t="+ Math.random(1000);
 	$(".content").load(url);
 })
 $('#load-team-id').click(function(){

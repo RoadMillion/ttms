@@ -1,4 +1,4 @@
-var pageCurrent = 1;
+/*var pageCurrent = 1;
 var pageCount;
 function clear(){
 	$("#tbodyId").empty();
@@ -48,15 +48,38 @@ function nextPage() {
 		pageCurrent ++;
 		doGetObjects(next);
 	}
+}*/
+$(function() {
+	doGetObjects();
+	$("#queryFormId").on("click",".btn-search",doQueryObjects);//如果给某个函数加括号，表示执行这个函数，绑定事件时要注意。
+});
+function doQueryObjects(){
+	//1.初始化当前页码
+	$("#pageId").data("pageCurrent",1);
+	doGetObjects();
+	//2.执行查询操作。
+	//2.1获得表单数据。
+	//2.2提交表单数据。
 }
-
-function doGetObjects(currentPage) {
-	console.log(typeof currentPage);
-	var url = "project/doFindPageObjects.do?currentPage=" + currentPage
+function getQueryFormData(){
+	var params = {
+			name : $("#searchNameId").val(),
+			valid : $("#searchValidId").val()
+	}
+	return params;
+}
+function doGetObjects() {
+	var pageCurrent=$('#pageId').data("pageCurrent");
+	//获取表单数据，查询时使用
+	var params = getQueryFormData();
+	if(!pageCurrent) pageCurrent=1;
+	params.pageCurrent=pageCurrent;
+	var url = "project/doFindPageObjects.do";
 	$.ajax({
 		"url" : url,
-		"type" : "get",
+		"type" : "post",
 		"datatype" : "json",
+		"data" : params,
 		"success" : function(data){
 //			console.log(data);
 //				$(".content").html(data);
@@ -75,12 +98,13 @@ function doGetObjects(currentPage) {
 	});*/
 	
 	);
-	
 	function setTableBodyRows(result) {
 		var tBody=$("#tbodyId");
 		var list = result.list;
 		var pageObject = result.pageObject;
-		page(pageObject);
+		setPagination(pageObject);
+		console.log(pageObject);
+		tBody.empty();
 		for(var x in list) {
 			var tr = $("<tr/>");
 			var tds = "<td><input type='checkbox' name='checkItem'></td>" + 
@@ -96,8 +120,18 @@ function doGetObjects(currentPage) {
 	}
 	
 }
+
+/*function doGetObjects1(){
+	console.log("doGetObjects1");
+	var url = "project.doFindPageObjects.do";
+	var param = {pageCurent:1};
+	$.getJSON
+	
+}
+
 function page(pageObject){
 		$(".pageCount").html("总页数(" + pageObject.pageCount+ ")");
 		pageCount = pageObject.pageCount;
 }
 
+*/

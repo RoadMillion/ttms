@@ -43,8 +43,11 @@ public class ProjectController {
 	}
 	@RequestMapping("doFindPageObjects")
 	@ResponseBody
-	public Map<String,Object> doFindPageObjects(@RequestParam("currentPage")int currentPage) {
-		return  projectService.findPageObjects(currentPage);
+	public Map<String,Object> doFindPageObjects(@RequestParam("name")String name,
+			@RequestParam("valid") Integer valid,
+			@RequestParam("pageCurrent")Integer currentPage) {
+		System.out.println(name);
+		return  projectService.findPageObjects(name,valid,currentPage);
 	}
 	@RequestMapping("listUI")
 	public String listUI() {

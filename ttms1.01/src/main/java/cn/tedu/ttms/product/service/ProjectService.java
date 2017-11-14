@@ -17,6 +17,6 @@ import cn.tedu.ttms.system.entity.Project;
 */
 public interface ProjectService {
 	List<Project> findObjects();
-	Map<String,Object> findPageObjects(Integer pageCurrent);
-	int getRowCount();
+	Map<String,Object> findPageObjects(String name,Integer valid,Integer pageCurrent);
+	int getRowCount(String name,Integer valid);
 }

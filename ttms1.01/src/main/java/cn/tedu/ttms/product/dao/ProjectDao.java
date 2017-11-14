@@ -20,6 +20,9 @@ public interface ProjectDao {
 	 */
 	List<Project> findObjects();
 	
-	List<Project> findPageObjects(@Param("startIndex")int startIndex, @Param("pageSize")int PageSize);
-	int getRowCount();
+	List<Project> findPageObjects(@Param("name")String name,@Param("valid")Integer valid,
+			@Param("startIndex")int startIndex, 
+			@Param("pageSize")int PageSize,
+			@Param("order")String order);
+	int getRowCount(@Param("name") String name,@Param("valid")Integer valid);
 }
