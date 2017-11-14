@@ -1,6 +1,7 @@
 package cn.tedu.ttms.product.service;
 
 import java.util.List;
+import java.util.Map;
 
 import cn.tedu.ttms.system.entity.Project;
 
@@ -16,4 +17,6 @@ import cn.tedu.ttms.system.entity.Project;
 */
 public interface ProjectService {
 	List<Project> findObjects();
+	Map<String,Object> findPageObjects(Integer pageCurrent);
+	int getRowCount();
 }

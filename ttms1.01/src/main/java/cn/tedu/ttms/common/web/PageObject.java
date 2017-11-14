@@ -8,7 +8,7 @@ public class PageObject implements Serializable{
 	/**当前页*/
 	private int pageCurrent=1;
 	/**每页最多能显示的记录数*/
-	private int pageSize=3;
+	private int pageSize=2;
 	/**总记录数*/
 	private int rowCount;
 	/**上一页的最后一条记录位置
@@ -45,6 +45,11 @@ public class PageObject implements Serializable{
 	}
 	public void setStartIndex(int startIndex) {
 		this.startIndex = startIndex;
+	}
+	@Override
+	public String toString() {
+		return " [pageCurrent=" + pageCurrent + ", pageSize=" + pageSize + ", rowCount=" + rowCount + ", startIndex="
+				+ startIndex + "]";
 	}
 	
 	

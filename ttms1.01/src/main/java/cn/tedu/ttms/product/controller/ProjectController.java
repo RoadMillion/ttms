@@ -1,11 +1,13 @@
 package cn.tedu.ttms.product.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.tedu.ttms.product.service.ProjectService;
@@ -19,9 +21,13 @@ import cn.tedu.ttms.system.entity.Project;
 @RequestMapping("/project/")
 @Controller
 public class ProjectController {
+	static int x = 1;
+	static {
+		x += 1;
+	}
 	@Autowired
 	private ProjectService projectService;
-	@RequestMapping("/doFindObjects")
+	@RequestMapping("doFindObjects")
 	@ResponseBody
 	/**
 	 *spring通过整合第三方的API，实现了JSON数据的转换，jackson
@@ -31,9 +37,20 @@ public class ProjectController {
 	 *当没有返回modelandview时，会将映射名当做视图名
 	 *
 	*/
-	public List<Project> doFindObjects( String objects){
+	public List<Project> doFindObjects(String objects){
 		List<Project> list = projectService.findObjects();
 		return list;
 	}
-	
+	@RequestMapping("doFindPageObjects")
+	@ResponseBody
+	public Map<String,Object> doFindPageObjects(@RequestParam("currentPage")int currentPage) {
+		return  projectService.findPageObjects(currentPage);
+	}
+	@RequestMapping("listUI")
+	public String listUI() {
+		return "product/project_list";
+	}
+	static {
+		x += 2;
+	}
 }

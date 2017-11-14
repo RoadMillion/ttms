@@ -10,6 +10,10 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import cn.tedu.ttms.common.web.JsonDateTypeConvert;
+
 /**
 * @author yulc E-mail:yl1451871636@163.com
 * @version create time : 2017年11月10日 上午11:01:42
@@ -75,6 +79,7 @@ public class Project implements Serializable{
 	public void setCode(String code) {
 		this.code = code;
 	}
+	@JsonSerialize(using=JsonDateTypeConvert.class)
 	public Date getBeginDate() {
 		return beginDate;
 	}
@@ -84,6 +89,7 @@ public class Project implements Serializable{
 	public Date getEndDate() {
 		return endDate;
 	}
+	@JsonSerialize(using=JsonDateTypeConvert.class)
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}

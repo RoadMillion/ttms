@@ -2,6 +2,8 @@ package cn.tedu.ttms.product.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import cn.tedu.ttms.system.entity.Project;
 
 /**
@@ -17,4 +19,7 @@ public interface ProjectDao {
 	 * @return List<Project>
 	 */
 	List<Project> findObjects();
+	
+	List<Project> findPageObjects(@Param("startIndex")int startIndex, @Param("pageSize")int PageSize);
+	int getRowCount();
 }

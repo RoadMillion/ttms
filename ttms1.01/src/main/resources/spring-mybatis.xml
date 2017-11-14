@@ -50,6 +50,7 @@
 	   <property name="mapperLocations" >
 			<list>
 			<value>classpath:mapper/*/*.xml</value>
+			<value>classpath:cn/tedu/ttms/product/dao/*.xml</value>
 			</list>
 		</property>
 	 </bean>
@@ -57,5 +58,6 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="cn.tedu.**.dao "/>
 	</bean>
+	
 
 </beans>

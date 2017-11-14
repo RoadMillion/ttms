@@ -74,4 +74,5 @@ $('#load-user-id').click(function(){
 	var url="user/listUI.do?t="+Math.random(1000);
 	$(".content").load(url);
 })
+
 </script>
