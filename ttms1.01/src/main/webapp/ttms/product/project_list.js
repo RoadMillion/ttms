@@ -94,6 +94,7 @@ function doGetObjects(currentPage) {
 			tBody.append(tr);
 		} 
 	}
+	
 }
 function page(pageObject){
 		$(".pageCount").html("总页数(" + pageObject.pageCount+ ")");
