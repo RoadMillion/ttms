@@ -3,6 +3,7 @@ package cn.tedu.ttms.product.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.aspectj.internal.lang.annotation.ajcDeclareAnnotation;
 
 import cn.tedu.ttms.system.entity.Project;
 
@@ -25,4 +26,5 @@ public interface ProjectDao {
 			@Param("pageSize")int PageSize,
 			@Param("order")String order);
 	int getRowCount(@Param("name") String name,@Param("valid")Integer valid);
+	int validById(@Param("ids")String[] ids,@Param("valid")Integer valid);
 }

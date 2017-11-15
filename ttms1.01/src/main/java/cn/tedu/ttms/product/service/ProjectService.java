@@ -16,7 +16,12 @@ import cn.tedu.ttms.system.entity.Project;
 * 5)权限的处理
 */
 public interface ProjectService {
+	//查询所有记录
 	List<Project> findObjects();
+	//获取第几页的几条记录
 	Map<String,Object> findPageObjects(String name,Integer valid,Integer pageCurrent);
+	//获取记录的行数
 	int getRowCount(String name,Integer valid);
+	//改变几个项目的状态
+	void validById(String ids,Integer valid);
 }

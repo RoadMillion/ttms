@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.tedu.ttms.common.web.JsonResult;
 import cn.tedu.ttms.product.service.ProjectService;
 import cn.tedu.ttms.system.entity.Project;
 
@@ -21,10 +22,7 @@ import cn.tedu.ttms.system.entity.Project;
 @RequestMapping("/project/")
 @Controller
 public class ProjectController {
-	static int x = 1;
-	static {
-		x += 1;
-	}
+
 	@Autowired
 	private ProjectService projectService;
 	@RequestMapping("doFindObjects")
@@ -43,17 +41,23 @@ public class ProjectController {
 	}
 	@RequestMapping("doFindPageObjects")
 	@ResponseBody
-	public Map<String,Object> doFindPageObjects(@RequestParam("name")String name,
+	public JsonResult doFindPageObjects(@RequestParam("name")String name,
 			@RequestParam("valid") Integer valid,
 			@RequestParam("pageCurrent")Integer currentPage) {
 		System.out.println(name);
-		return  projectService.findPageObjects(name,valid,currentPage);
+		return  new JsonResult(projectService.findPageObjects(name,valid,currentPage));
 	}
 	@RequestMapping("listUI")
 	public String listUI() {
 		return "product/project_list";
 	}
-	static {
-		x += 2;
+	@RequestMapping("doValidById")
+	@ResponseBody
+	public JsonResult doValidById(@RequestParam("checkedIds")String checkedIds,//{state:1,message:"ok",data:null}
+			@RequestParam("valid")Integer valid) {
+		System.out.println("doValidById");
+			projectService.validById(checkedIds, valid);
+			return new JsonResult();
+		
 	}
 }

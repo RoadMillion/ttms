@@ -29,5 +29,13 @@
 			</if>
 		</where>
 	</select>
+	<!-- 执行禁用和启用操作  -->
+	<update id="validById">
+		update tms_projects set valid=#{valid}
+		where id in 
+		<foreach collection="ids" open="(" close=")" separator="," item="item">
+			${item}
+		</foreach>
+	</update>
 	
 </mapper>
